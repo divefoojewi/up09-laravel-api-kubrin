@@ -31,4 +31,38 @@ class AuthController extends Controller
             'token_type' => 'Bearer'
             ], 201);
     }
-}
+
+    public function login(Request $request): JsonResponse
+    {
+        $data = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string'
+            ]);
+
+            $user = User::where('email', $data['email'])->first();
+            
+            if (! $user || ! Hash::check($data['password'], $user->password)) {
+                return response()->json([
+                    'message' => 'Неверный email или пароль'
+                ], 401);
+            }
+            $token = $user->createToken('auth_token')->plainTextToken;
+
+        return response()->json([
+            'user' => $user,
+            'access_token'=> $token,
+            'token_type' => 'Bearer'
+            ], 200);
+            
+    }
+
+    public function logout(Request $request)
+    {
+        $request->user()->currentAccessToken()->delete();
+
+        return response()->jason([
+            'message' => 'Успешный выход'
+        ], 200);
+    }
+
+};
