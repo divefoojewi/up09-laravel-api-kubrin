@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -19,9 +21,18 @@ class BookingController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $data = $request->validate([
+            'room_name' => 'required|string|max:100',
+            'starts_at' => 'required|date|after:now',
+            'ends_at' => 'required|date|after:starts_at',
+            'note' => 'nullable|string|max:500',
+        ]);
+
+        $booking = $request->user()->bookings()->create($data);
+
+        return response()->json($booking, 201);
     }
 
     /**
@@ -59,8 +70,9 @@ class BookingController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, Booking $booking): JsonResponse
     {
-        //
+        $booking->delete();
+        return response()->json(["message" => "Встреча отменена"], 200);
     }
 }
