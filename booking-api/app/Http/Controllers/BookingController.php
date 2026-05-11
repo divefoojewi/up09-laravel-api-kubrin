@@ -46,9 +46,13 @@ class BookingController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request, Booking $booking): JsonResponse
     {
-        //
+         if ($booking->user_id !== $request->user()->id) {
+            return response()->json(['message' => 'Доступ запрещён.'], 403);
+        }
+
+        return response()->json($booking);
     }
 
     /**
@@ -62,9 +66,36 @@ class BookingController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Booking $booking)
     {
-        //
+        $data = $request->validate([
+            'room_name' => 'sometimes|string|max:100',
+            'starts_at' => 'sometimes|date|after:now',
+            'ends_at' => 'sometimes|date|after:starts_at',
+            'note' => 'nullable|string|max:500',
+        ]);
+
+        $conflict = Booking::where('room_name', $data['room_name'] ?? $booking->room_name)
+            ->where('id', '!=', $booking->id)
+            ->where(function ($query) use ($data, $booking) {
+                $start = $data['starts_at'] ?? $booking->starts_at;
+                $end = $data['ends_at'] ?? $booking->ends_at;
+
+                $query->where('starts_at', '<', $end)
+                    ->where('ends_at', '>', $start);
+            })
+            ->exists();
+
+        if ($conflict) {
+            return response()->json([
+                'message' => 'Комната занята в это время'
+            ], 409);
+        }
+
+        $booking->update($data);
+
+        // dd($booking);
+        return response()->json($booking, 200);
     }
 
     /**

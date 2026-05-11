@@ -60,7 +60,7 @@ class AuthController extends Controller
     {
         $request->user()->currentAccessToken()->delete();
 
-        return response()->jason([
+        return response()->json([
             'message' => 'Успешный выход'
         ], 200);
     }
