@@ -1,0 +1,292 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Scratch Pad
+meta:
+  id: wrk_scratchpad
+  created: 1778469821217
+  modified: 1778469821217
+  description: ""
+collection:
+  - name: Booking API
+    meta:
+      id: fld_666f2e226f06406ea57d217b1747d637
+      created: 1778042063818
+      modified: 1778470353222
+      sortKey: -1778042063818
+      description: ""
+    children:
+      - url: "{{url}}/api/register"
+        name: Register
+        meta:
+          id: req_56dca497a26340e4a24f5613ed69d7aa
+          created: 1778039373255
+          modified: 1778043593073
+          isPrivate: false
+          description: ""
+          sortKey: -1778042069254
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name":"Bogdan",
+            	"email":"diveffff@gmail.com",
+            	"password":"888hahaha",
+            	"password_confirmation":"888hahaha"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{url}}/api/login"
+        name: Login
+        meta:
+          id: req_edc281ed39a0446481ffc5d430ad853f
+          created: 1778043018043
+          modified: 1778043737605
+          isPrivate: false
+          description: ""
+          sortKey: -1778043018043
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"email":"diveffff@gmail.com",
+            	"password":"888hahaha"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{url}}/api/logout"
+        name: Logout
+        meta:
+          id: req_b0a8092809494be387b1f61049e14574
+          created: 1778043903412
+          modified: 1778044053596
+          isPrivate: false
+          description: ""
+          sortKey: -1778043903412
+        method: POST
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{url}}/api/bookings"
+        name: Get all bookings
+        meta:
+          id: req_54bc6d1e46da49b4a37fd4ae42998ace
+          created: 1778046230828
+          modified: 1778470337309
+          isPrivate: false
+          description: ""
+          sortKey: -1778046230828
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{url}}/api/bookings"
+        name: Create
+        meta:
+          id: req_09058d7577b24fa7a7a249236605e71d
+          created: 1778216535205
+          modified: 1778471887197
+          isPrivate: false
+          description: ""
+          sortKey: -1778216535205
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            "room_name":"yoga",
+            "starts_at":"08.11.2026",
+            "ends_at":"28.12.2026",
+            "note":"stutututu"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{url}}/api/bookings/:id"
+        name: Delete
+        meta:
+          id: req_eed0ce5359cd436abe51e91d158c105d
+          created: 1778217776307
+          modified: 1778470395379
+          isPrivate: false
+          description: ""
+          sortKey: -1778217776307
+        method: DELETE
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+        pathParameters:
+          - name: id
+            value: "3"
+      - url: "{{url}}/api/bookings/:id"
+        name: Update
+        meta:
+          id: req_ed452891320d44fa814165d9b580b7d5
+          created: 1778470426298
+          modified: 1778471938655
+          isPrivate: false
+          description: ""
+          sortKey: -1778470426298
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            "room_name":"yoga",
+            "starts_at":"08.11.2026",
+            "ends_at":"30.12.2026",
+            "note":"stutututustu"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+        pathParameters:
+          - name: id
+            value: "4"
+      - url: "{{url}}/api/bookings/:id"
+        name: New Request
+        meta:
+          id: req_74ac0ed9d82e438ca49cb0f1b71ffbd0
+          created: 1778472029577
+          modified: 1778472077013
+          isPrivate: false
+          description: ""
+          sortKey: -1778472029577
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+        pathParameters:
+          - name: id
+            value: "4"
+    authentication:
+      type: bearer
+      token: 6|3CLc0jVPwKsmX35CYXLZR4nbPTM8VxnEsJfh6zESfd6d4e4b
+      prefix: Bearer
+    environment:
+      url: https://upgraded-tribble-wr5jr4vr9j4rh5jjw-8000.app.github.dev
+    headers:
+      - name: Accept
+        value: application/json
+        description: ""
+        disabled: false
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_99d30891da4bdcebc63947a8fc17f076de878684
+    created: 1778469955636
+    modified: 1778472150899
+  cookies:
+    - id: 4845fba8-d38c-4a01-8303-9be10e1d4c57
+      key: .Tunnels.Relay.WebForwarding.Cookies
+      value: CfDJ8NJJuTEdEi5KqensronCVW1LqBrWNFQkkKGvyLEviniqw6upQni-mRGl8FzIlWnUhXXRhDw4eVuVLg11XTJcYLXKRKrBcrTJApKWtEBLtbrelIvovK2Vr91rwgmYlVmW_IHG3DGUxOmDR9EDN1r1Bgid4DLeZCyUEFzyR5EiD4WK2Yo_AIHCAxTi31Dd7RtpSbjtoKnaUFDudSjThhkgL_1TntOabGaVmx6ASIoTGt3xawo1-MIIXXkFfu6V3GlLGBx7TrE_xkjSj-SZhg_G8Uf0GnQaPxRQr6Ba3ZYoiLicZZVJcB6gHfKeth2lGdEAeApVi3iGxKyb7KUV3Lw5veBBxRfwMY3DOyt9l_yXBPF0ntpmLt5-1sTq-8klMSbsS2lGyI-3J_XjI8QP5tJaMdTdo6v3GC6QVcgz3VJsuVpu8rsL5s6pwnpHKlvbYIicczUl6l2nX_zBX61cuRw7nwfP2efeHDwhVy86oQAlTOC42Hb12KiXj4UQuI4D3cRIRajERbJdhD4Je6eeZ65wwYl8katZkLunfOphkTUjmkXbZ3u0XOuORdA1-vNekIo8ENM9m8hoHvx7vObNBdnYyHWAE9rX7AOIJTc7lljoq6bx2qcdbRWCo61D7tYE1nq8Kg0m8F4DA-lL4iDxzVA_nkFV-mHPYjMhyiovd6Uot2kALyLcGolwG6YEQxWyXi6MVMoLtFsiT6tekFqaYdCOHHEUK71kkSsrH64uy3cLDI1qfWqoItXO249dsGVfRLaPCzMIablTt3UX8JjUNj6gAwzW0oz3wXnP6RJxZ1MZRaZJdDpczS6ydw3eF062ewQIm2p9Fm_Zl5HQeBYX7--kXTs-auMExdoln67bCt-NCoeik3UTizV3HtBfTXeEHEl7hL_tmk3Calo6dUZeXvUKpWhnQJBG0oaVnz_g1MRJMLClU7bpRN2P2H0Z5nGHX6QGOLE7XRHl7yhy70l3uun9-o7WzWxo8MOUFYifmTvi8MOh
+      domain: upgraded-tribble-wr5jr4vr9j4rh5jjw-8000.app.github.dev
+      path: /
+      secure: true
+      httpOnly: false
+      extensions:
+        - Partitioned
+      hostOnly: true
+environments:
+  name: Base Environment
+  meta:
+    id: env_99d30891da4bdcebc63947a8fc17f076de878684
+    created: 1778469955632
+    modified: 1778469955632
+    isPrivate: false
